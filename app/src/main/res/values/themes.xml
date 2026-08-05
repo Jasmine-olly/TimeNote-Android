@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 纯 Compose 应用：用平台自带的 NoActionBar 主题即可，无需引入 Material Components -->
+    <style name="Theme.TimeNote" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- F2.2 到点提问弹窗：悬浮对话框 -->
+    <style name="Theme.TimeNote.Dialog" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:windowIsFloating">true</item>
+    </style>
+</resources>

@@ -1,0 +1,20 @@
+# Gradle
+.gradle/
+.kotlin/
+build/
+*.log
+
+# 本地配置（含 SDK 路径，勿提交）
+local.properties
+
+# Claude Code 本机配置（勿提交）
+.claude/settings.local.json
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# 签名文件（隐私红线：绝不外传）
+*.jks
+*.keystore

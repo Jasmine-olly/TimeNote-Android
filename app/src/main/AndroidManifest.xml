@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- F1.5 悬浮窗权限：悬浮计时器 + 阈值弹窗 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- F1.5 使用情况访问：检测前台应用（需用户在设置中手动授权） -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- F1.5 通知：Android 13+ 动态申请，前台服务通知 / 提醒兜底 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- 前台服务（悬浮计时器驻留后台所必需） -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- F2 定时提问：精确闹钟（Android 12+ 可在系统设置中授权，未授权时降级为窗口闹钟） -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <!-- 开机后重新登记定时提问闹钟 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- 读取已安装应用（用于娱乐清单勾选），仅查询可启动的应用 -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TimeNote">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- F2.2 到点提问弹窗（悬浮对话框，由闹钟接收器启动） -->
+        <activity
+            android:name=".question.QuestionPromptActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.TimeNote.Dialog" />
+
+        <!-- F2.2 定时提问闹钟接收器 -->
+        <receiver
+            android:name=".question.QuestionAlarmReceiver"
+            android:exported="false" />
+
+        <!-- F2 开机重排闹钟 -->
+        <receiver
+            android:name=".question.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- F1 监督前台服务：持有悬浮计时器与提醒弹窗 -->
+        <service
+            android:name=".monitor.FloatTimerService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="timenote_usage_monitor" />
+        </service>
+
+        <!-- F1.2 无障碍兜底前台检测：需用户在系统设置中手动开启 -->
+        <service
+            android:name=".monitor.TimeNoteAccessibilityService"
+            android:exported="false"
+            android:label="@string/accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+    </application>
+
+</manifest>

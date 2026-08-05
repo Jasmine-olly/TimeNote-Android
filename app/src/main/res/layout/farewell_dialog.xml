@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- F1.4 退出引导页：全屏蒙层 + 10 秒倒计时（纸感卡片） -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp"
+        android:background="@drawable/dialog_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="该走了 🌿"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#4A4438" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="深呼吸，放下手机，\n去做点别的吧。"
+            android:textSize="16sp"
+            android:textColor="#6B6559" />
+
+        <TextView
+            android:id="@+id/farewell_countdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="10"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="#6F8A6A" />
+
+        <Button
+            android:id="@+id/btn_i_am_ready"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_paper_solid"
+            android:textColor="#FFFFFF"
+            android:text="我准备好了" />
+    </LinearLayout>
+</FrameLayout>

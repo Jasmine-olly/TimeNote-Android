@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 纸感实心按钮：深鼠尾草绿填充 + 大圆角 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#6F8A6A" />
+    <corners android:radius="18dp" />
+</shape>

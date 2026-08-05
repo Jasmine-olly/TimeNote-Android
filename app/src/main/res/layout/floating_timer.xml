@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- F1.2 悬浮计时器：奶油纸胶囊 + 手绘虚线描边，不拦截触摸 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="@drawable/timer_bg">
+
+    <TextView
+        android:id="@+id/timer_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⏱"
+        android:textColor="#6F8A6A"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="#4A4438"
+        android:textSize="15sp"
+        android:text="已使用 00:00" />
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TimeNote</string>
+
+    <string name="accessibility_service_label">TimeNote 前台检测</string>
+    <string name="accessibility_service_description">用于实时检测你正在使用的应用，以便更准确地统计娱乐使用时长。所有数据仅保存在本机。</string>
+</resources>
